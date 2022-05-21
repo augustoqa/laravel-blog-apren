@@ -16,12 +16,10 @@ Route::get('/', function () {
     return view('welcome', compact('posts'));
 });
 
-Route::get('admin', function () {
+Route::get('home', function () {
     return view('admin.dashboard');
-});
+})->middleware('auth');
 
 Auth::routes([
     'register' => false,
 ]);
-
-Route::get('/home', 'HomeController@index')->name('home');
