@@ -19,7 +19,7 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
                 <li class="nav-item">
-                    <a href="pages/mailbox/mailbox.html" class="nav-link">
+                    <a href="{{ route('admin.posts.index') }}" class="nav-link">
                         <i class="far fa-eye nav-icon"></i>
                         <p>Vet todos los posts</p>
                     </a>
