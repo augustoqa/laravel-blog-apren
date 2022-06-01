@@ -34,8 +34,30 @@
 				<div class="card card-primary">
 					<div class="card-body">
 						<div class="form-group">
+	                  		<label>Fecha de publicación:</label>
+
+	                  		<div class="input-group date" id="reservationdate" data-target-input="nearest">
+                        		<input name="published_at" type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+	                        	<div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+	                            	<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+	                        	</div>
+                    		</div>
+	                	</div>
+	                	<div class="form-group">
+	                		<label>Categoría</label>
+	                		<select class="form-control">
+	                			<option value="">Selecciona una categoría</option>
+	                			@foreach ($categories as $category)
+	                			<option value="{{ $category->id }}">{{ $category->name }}</option>
+	                			@endforeach
+	                		</select>
+	                	</div>
+						<div class="form-group">
 	        				<label>Extracto de la publicación</label>
 	        				<textarea name="excerpt" class="form-control" placeholder="Ingresa un extracto de la publicación"></textarea>
+	        			</div>
+	        			<div class="form-group">
+	        				<button type="submit" class="btn btn-primary btn-block">Guardar Publicación</button>
 	        			</div>
 					</div>
 				</div>
@@ -43,3 +65,21 @@
 		</div>
 	</form>
 @stop
+
+@push('styles')
+	<!-- Tempusdominus Bootstrap 4 -->
+  	<link rel="stylesheet" href="/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+@endpush
+
+@push('scripts')
+	<!-- InputMask -->
+	<script src="/adminlte/plugins/moment/moment.min.js"></script>
+	<!-- Tempusdominus Bootstrap 4 -->
+	<script src="/adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+	<script>
+    	//Date picker
+	    $('#reservationdate').datetimepicker({
+	        format: 'L'
+	    });
+	</script>
+@endpush
