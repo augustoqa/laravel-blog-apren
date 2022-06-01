@@ -9,7 +9,7 @@
                 </p>
             </a>
         </li>
-        <li class="nav-item {{ request()->is('admin/posts') ? 'menu-open': '' }}">
+        <li class="nav-item {{ request()->is('admin/posts*') ? 'menu-open': '' }}">
             <a href="#" class="nav-link {{ request()->is('admin/posts') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-bars"></i>
                 <p>
@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/mailbox/compose.html" class="nav-link">
+                    <a href="{{ route('admin.posts.create') }}" class="nav-link {{ request()->is('admin/posts/create') ? 'active' : '' }}"">
                         <i class="fas fa-pencil-alt nav-icon"></i>
                         <p>Crear post</p>
                     </a>
