@@ -25,7 +25,7 @@
 			        	</div>
 			        	<div class="form-group">
 			        		<label>Contenido publicación</label>
-			        		<textarea name="body" class="form-control" placeholder="Ingresa el contenido completo de la publicación" rows="10"></textarea>
+			        		<textarea name="body" class="form-control" id="editor" placeholder="Ingresa el contenido completo de la publicación" rows="10"></textarea>
 			        	</div>
 			        </div>	
 				</div>
@@ -52,6 +52,17 @@
 	                			@endforeach
 	                		</select>
 	                	</div>
+	                	<div class="form-group">
+							<label>Etiquetas</label>
+							<select class="select2" 
+									multiple="multiple" 
+									data-placeholder="Selecciona una o más etiquetas" 
+									style="width: 100%;">
+								@foreach ($tags as $tag)
+								<option value="{{ $tag->id }}">{{ $tag->name }}</option>
+								@endforeach
+							</select>
+		                </div>
 						<div class="form-group">
 	        				<label>Extracto de la publicación</label>
 	        				<textarea name="excerpt" class="form-control" placeholder="Ingresa un extracto de la publicación"></textarea>
@@ -69,9 +80,18 @@
 @push('styles')
 	<!-- Tempusdominus Bootstrap 4 -->
   	<link rel="stylesheet" href="/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  	<!-- summernote -->
+ 	<link rel="stylesheet" href="/adminlte/plugins/summernote/summernote-bs4.min.css">
+ 	<!-- Select2 -->
+	<link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
+	<link rel="stylesheet" href="/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 @endpush
 
 @push('scripts')
+	<!-- Summernote -->
+	<script src="/adminlte/plugins/summernote/summernote-bs4.min.js"></script>
+	<!-- Select2 -->
+	<script src="/adminlte/plugins/select2/js/select2.full.min.js"></script>
 	<!-- InputMask -->
 	<script src="/adminlte/plugins/moment/moment.min.js"></script>
 	<!-- Tempusdominus Bootstrap 4 -->
@@ -81,5 +101,11 @@
 	    $('#reservationdate').datetimepicker({
 	        format: 'L'
 	    });
+
+	    //Initialize Select2 Elements
+    	$('.select2').select2()
+
+	    // Summernote
+    	$('#editor').summernote()
 	</script>
 @endpush
