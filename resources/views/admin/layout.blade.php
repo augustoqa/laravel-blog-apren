@@ -226,6 +226,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
+                    @if (session()->has('flash'))
+                        <div class="alert alert-success">{{ session('flash') }}</div>
+                    @endif
                     @yield('content')
                 </div><!-- /.container-fluid -->
             </div>

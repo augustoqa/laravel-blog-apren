@@ -14,7 +14,8 @@
 @stop
 
 @section('content')
-	<form>
+	<form method="POST" action="{{ route('admin.posts.store') }}">
+		{{ csrf_field() }}
 		<div class="row">
 			<div class="col-md-8">
 				<div class="card card-primary">
@@ -45,7 +46,7 @@
 	                	</div>
 	                	<div class="form-group">
 	                		<label>Categoría</label>
-	                		<select class="form-control">
+	                		<select name="category" class="form-control">
 	                			<option value="">Selecciona una categoría</option>
 	                			@foreach ($categories as $category)
 	                			<option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -54,7 +55,7 @@
 	                	</div>
 	                	<div class="form-group">
 							<label>Etiquetas</label>
-							<select class="select2" 
+							<select name="tags[]" class="select2" 
 									multiple="multiple" 
 									data-placeholder="Selecciona una o más etiquetas" 
 									style="width: 100%;">
