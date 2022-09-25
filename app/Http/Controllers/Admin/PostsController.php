@@ -28,26 +28,43 @@ class PostsController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title'    => 'required',
-            'body'     => 'required',
-            'category' => 'required',
-            'excerpt'  => 'required',
-            'tags'     => 'required',
+        $this->validate($request, ['title' => 'required']);
+
+        $post = Post::create([
+            'title' => $request->get('title'),
+            'url' => \Str::slug($request->get('title')),
         ]);
 
-        // return Post::create($request->all());
-        $post = new Post;
-        $post->title = $request->get('title');
-        $post->url = \Str::slug($request->get('title'));
-        $post->body = $request->get('body');
-        $post->excerpt = $request->get('excerpt');
-        $post->published_at = $request->get('published_at') ? Carbon::parse($request->get('published_at')) : null;
-        $post->category_id = $request->get('category');
-        $post->save();
-        // etiquetas
-        $post->tags()->attach($request->get('tags'));
-
-        return back()->with('flash', 'Tu publicación ha sido creada');
+        return redirect()->route('admin.posts.edit', $post);
     }
+
+    public function edit(Post $post)
+    {
+        return view('admin.posts.edit', compact('post'));
+    }
+
+    // public function store(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'title'    => 'required',
+    //         'body'     => 'required',
+    //         'category' => 'required',
+    //         'excerpt'  => 'required',
+    //         'tags'     => 'required',
+    //     ]);
+
+    //     // return Post::create($request->all());
+    //     $post = new Post;
+    //     $post->title = $request->get('title');
+    //     $post->url = \Str::slug($request->get('title'));
+    //     $post->body = $request->get('body');
+    //     $post->excerpt = $request->get('excerpt');
+    //     $post->published_at = $request->get('published_at') ? Carbon::parse($request->get('published_at')) : null;
+    //     $post->category_id = $request->get('category');
+    //     $post->save();
+    //     // etiquetas
+    //     $post->tags()->attach($request->get('tags'));
+
+    //     return back()->with('flash', 'Tu publicación ha sido creada');
+    // }
 }

@@ -16,6 +16,9 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Listado de publicaciones</h3>
+            <button class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-plus"></i>&nbsp; Crear publicación
+            </button>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -29,17 +32,17 @@
                     </tr>
                 </thead>
                 <tbody>
-				@foreach ($posts as $post)
-					<tr>
-						<td>{{ $post->id }}</td>
-						<td>{{ $post->title }}</td>
+                @foreach ($posts as $post)
+                    <tr>
+                        <td>{{ $post->id }}</td>
+                        <td>{{ $post->title }}</td>
                         <td>{{ $post->excerpt }}</td>
                         <td>
                             <a href="" class="btn btn-xs btn-info"><i class="fas fa-pencil-alt nav-icon"></i></a>
                             <a href="" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
                         </td>
-					</tr>
-				@endforeach
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
@@ -80,4 +83,36 @@
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
     </script>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form method="POST" action="{{ route('admin.posts.store') }}">
+            {{ csrf_field() }}
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Agrega el título de tu nueva publicación</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            {{-- <label>Título de la publicación</label> --}}
+                            <input name="title" 
+                                type="text" 
+                                class="form-control {{ $errors->has('title') ?  'is-invalid' : '' }}"
+                                value="{{ old('title') }}" 
+                                placeholder="Ingresa aquí el título de la publicación">
+                            {!! $errors->first('title', '<span class="error invalid-feedback">:message</span>') !!}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary">Crear publicación</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 @endpush
