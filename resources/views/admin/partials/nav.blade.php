@@ -21,11 +21,11 @@
                 <li class="nav-item">
                     <a href="{{ route('admin.posts.index') }}" class="nav-link {{ request()->is('admin/posts') ? 'active' : '' }}">
                         <i class="far fa-eye nav-icon"></i>
-                        <p>Vet todos los posts</p>
+                        <p>Ver todos los posts</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.posts.create') }}" class="nav-link {{ request()->is('admin/posts/create') ? 'active' : '' }}"">
+                    <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">
                         <i class="fas fa-pencil-alt nav-icon"></i>
                         <p>Crear post</p>
                     </a>
