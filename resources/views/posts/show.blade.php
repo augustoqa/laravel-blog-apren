@@ -7,6 +7,8 @@
     <article class="post container">
         @if ($post->photos->count() === 1)    
         <figure><img src="{{ $post->photos->first()->url }}" alt="" class="img-responsive"></figure>
+        @else
+            @include('posts.carousel')
         @endif
         <div class="content-post">
             <header class="container-flex space-between">
@@ -40,6 +42,13 @@
     </article>
 @endsection
 
+@push('styles')
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+@endpush
+
 @push('scripts')
     <script id="dsq-count-scr" src="//zendero.disqus.com/count.js" async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 @endpush
