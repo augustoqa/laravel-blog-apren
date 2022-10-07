@@ -90,6 +90,9 @@
 	        				{!! $errors->first('excerpt', '<span class="error invalid-feedback">:message</span>') !!}
 	        			</div>
 	        			<div class="form-group">
+	        				<div class="dropzone"></div>
+	        			</div>
+	        			<div class="form-group">
 	        				<button type="submit" class="btn btn-primary btn-block">Guardar Publicación</button>
 	        			</div>
 					</div>
@@ -107,9 +110,11 @@
  	<!-- Select2 -->
 	<link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
 	<link rel="stylesheet" href="/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css" integrity="sha512-WvVX1YO12zmsvTpUQV8s7ZU98DnkaAokcciMZJfnNWyNzm7//QRV61t4aEr0WdIa4pe854QHLTV302vH92FSMw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endpush
 
 @push('scripts')
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js" integrity="sha512-oQq8uth41D+gIH/NJvSJvVB85MFk1eWpMK6glnkg6I7EdMqC1XVkW7RxLheXwmFdG03qScCM7gKS/Cx3FYt7Tg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<!-- Summernote -->
 	<script src="/adminlte/plugins/summernote/summernote-bs4.min.js"></script>
 	<!-- Select2 -->
@@ -129,5 +134,15 @@
 
 	    // Summernote
     	$('#editor').summernote()
+
+    	new Dropzone('.dropzone', {
+    		url: '/admin/posts/{{ $post->url }}/photos',
+    		headers: {
+    			'X-CSRF-TOKEN': '{{ csrf_token() }}',
+    		},
+    		dictDefaultMessage: 'Arrastra las fotos aquí para subirlas',
+    	})
+
+    	Dropzone.autoDiscover = false
 	</script>
 @endpush
