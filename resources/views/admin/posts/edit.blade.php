@@ -14,6 +14,28 @@
 @stop
 
 @section('content')
+	@if($post->photos->count())
+	<div class="col-md-12">
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+	        	@foreach ($post->photos as $photo)
+	        		<div class="col-md-2">
+	        			<form method="POST" action="{{ route('admin.photos.destroy', $photo) }}">
+	        				{{ method_field('DELETE') }} {{ csrf_field() }}
+		        			<button class="btn btn-danger btn-xs" style="position: absolute;">
+		        				<i class="fa fa-trash"></i>
+		        			</button>
+		        			<img src="{{ $photo->url }}" class="img-responsive" style="width: 100%;">
+	        			</form>
+	        		</div>
+	        	@endforeach
+	        	</div>
+			</div>
+		</div>
+	</div>
+	@endif
+	
 	<form method="POST" action="{{ route('admin.posts.update', $post) }}">
 		{{ csrf_field() }} {{ method_field('PUT') }}
 		<div class="row">
@@ -100,25 +122,6 @@
 			</div>
 		</div>
 	</form>
-	<div class="col-md-8">
-		<div class="card">
-			<div class="card-body">
-				<div class="row">
-	        	@foreach ($post->photos as $photo)
-	        		<div class="col-md-2">
-	        			<form method="POST" action="{{ route('admin.photos.destroy', $photo) }}">
-	        				{{ method_field('DELETE') }} {{ csrf_field() }}
-		        			<button class="btn btn-danger btn-xs" style="position: absolute;">
-		        				<i class="fa fa-trash"></i>
-		        			</button>
-		        			<img src="{{ $photo->url }}" class="img-responsive" style="width: 100%;">
-	        			</form>
-	        		</div>
-	        	@endforeach
-	        	</div>
-			</div>
-		</div>
-	</div>
 @stop
 
 @push('styles')
