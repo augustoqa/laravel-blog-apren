@@ -100,6 +100,25 @@
 			</div>
 		</div>
 	</form>
+	<div class="col-md-8">
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+	        	@foreach ($post->photos as $photo)
+	        		<div class="col-md-2">
+	        			<form method="POST" action="{{ route('admin.photos.destroy', $photo) }}">
+	        				{{ method_field('DELETE') }} {{ csrf_field() }}
+		        			<button class="btn btn-danger btn-xs" style="position: absolute;">
+		        				<i class="fa fa-trash"></i>
+		        			</button>
+		        			<img src="{{ $photo->url }}" class="img-responsive" style="width: 100%;">
+	        			</form>
+	        		</div>
+	        	@endforeach
+	        	</div>
+			</div>
+		</div>
+	</div>
 @stop
 
 @push('styles')
@@ -133,7 +152,9 @@
     	$('.select2').select2()
 
 	    // Summernote
-    	$('#editor').summernote()
+    	$('#editor').summernote({
+    		height: 360,
+    	})
 
     	var myDropzone = new Dropzone('.dropzone', {
     		url: '/admin/posts/{{ $post->url }}/photos',
