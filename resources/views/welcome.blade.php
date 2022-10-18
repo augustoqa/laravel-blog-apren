@@ -6,7 +6,7 @@
         <article class="post">
             @if ($post->photos->count() === 1)    
             <figure><img src="{{ $post->photos->first()->url }}" alt="" class="img-responsive"></figure>
-            @else
+            @elseif($post->photos->count() > 1)
             <div class="gallery-photos" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 464 }'>
                 @foreach ($post->photos->take(4) as $photo)
                 <figure class="grid-item grid-item--height2">
@@ -16,6 +16,10 @@
                     <img src="{{ $photo->url }}" alt="">
                 </figure>
                 @endforeach
+            </div>
+            @elseif ($post->iframe)
+            <div class="video">
+                {!! $post->iframe !!}
             </div>
             @endif
             <div class="content-post">

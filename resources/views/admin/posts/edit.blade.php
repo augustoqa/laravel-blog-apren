@@ -61,6 +61,16 @@
 			        		>{{ old('body', $post->body) }}</textarea>
 			        		{!! $errors->first('body', '<span class="error invalid-feedback">:message</span>') !!}
 			        	</div>
+			        	<div class="form-group">
+			        		<label>Contenido embebido (iframe)</label>
+			        		<textarea name="iframe" 
+			        			class="form-control {{ $errors->has('iframe') ?  'is-invalid' : '' }}" 
+			        			id="editor" 
+			        			placeholder="Ingresa el contenido embebido (iframe) de audio o video" 
+			        			rows="2"
+			        		>{{ old('iframe', $post->iframe) }}</textarea>
+			        		{!! $errors->first('iframe', '<span class="error invalid-feedback">:message</span>') !!}
+			        	</div>
 			        </div>	
 				</div>
 			</div>
