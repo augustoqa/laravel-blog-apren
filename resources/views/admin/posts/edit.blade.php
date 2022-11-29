@@ -89,7 +89,7 @@
 	                	</div>
 	                	<div class="form-group">
 	                		<label>Categoría</label>
-	                		<select name="category" class="form-control {{ $errors->has('category') ?  'is-invalid' : '' }}">
+	                		<select name="category" class="form-control select2 {{ $errors->has('category') ?  'is-invalid' : '' }}">
 	                			<option value="">Selecciona una categoría</option>
 	                			@foreach ($categories as $category)
 	                			<option value="{{ $category->id }}" {{ old('category', $post->category_id) == $category->id ? 'selected' : '' }}>
@@ -162,7 +162,9 @@
 	    });
 
 	    //Initialize Select2 Elements
-    	$('.select2').select2()
+    	$('.select2').select2({
+    		tags: true,
+    	})
 
 	    // Summernote
     	$('#editor').summernote({

@@ -45,6 +45,7 @@ class PostsController extends Controller
 
     public function update(Post $post, Request $request)
     {
+        // return $request->all();
         $this->validate($request, [
             'title'    => 'required',
             'body'     => 'required',
@@ -59,10 +60,18 @@ class PostsController extends Controller
         $post->iframe = $request->get('iframe');
         $post->excerpt = $request->get('excerpt');
         $post->published_at = $request->get('published_at') ? Carbon::parse($request->get('published_at')) : null;
-        $post->category_id = $request->get('category');
+        $post->category_id = Category::find($cat = $request->get('category'))
+                                ? $cat
+                                : Category::create(['name' => $cat])->id;
         $post->save();
+
+        $tags = [];
+        foreach ($request->get('tags') as $tag) {
+            $tags[] = Tag::find($tag) ? $tag : Tag::create(['name' => $tag])->id;
+        }
+
         // etiquetas
-        $post->tags()->sync($request->get('tags'));
+        $post->tags()->sync($tags);
 
         return redirect()
             ->route('admin.posts.edit', $post)
