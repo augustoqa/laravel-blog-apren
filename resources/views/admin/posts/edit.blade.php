@@ -89,15 +89,15 @@
 	                	</div>
 	                	<div class="form-group">
 	                		<label>Categoría</label>
-	                		<select name="category" class="form-control select2 {{ $errors->has('category') ?  'is-invalid' : '' }}">
+	                		<select name="category_id" class="form-control select2 {{ $errors->has('category_id') ?  'is-invalid' : '' }}">
 	                			<option value="">Selecciona una categoría</option>
 	                			@foreach ($categories as $category)
-	                			<option value="{{ $category->id }}" {{ old('category', $post->category_id) == $category->id ? 'selected' : '' }}>
+	                			<option value="{{ $category->id }}" {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}>
 	                				{{ $category->name }}
 	                			</option>
 	                			@endforeach
 	                		</select>
-	                		{!! $errors->first('category', '<span class="error invalid-feedback">:message</span>') !!}
+	                		{!! $errors->first('category_id', '<span class="error invalid-feedback">:message</span>') !!}
 	                	</div>
 	                	<div class="form-group">
 							<label>Etiquetas</label>
