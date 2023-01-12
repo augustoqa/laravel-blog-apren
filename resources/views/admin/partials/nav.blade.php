@@ -25,10 +25,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    @if (request()->is('admin/posts/*'))
+                    <a href="{{ route('admin.posts.index', '#create') }}" class="nav-link">
+                        <i class="fas fa-pencil-alt nav-icon"></i>
+                        <p>Crear post</p>
+                    </a>
+                    @else
                     <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">
                         <i class="fas fa-pencil-alt nav-icon"></i>
                         <p>Crear post</p>
                     </a>
+                    @endif
                 </li>
             </ul>
         </li>
