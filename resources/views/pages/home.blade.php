@@ -16,7 +16,7 @@
                     @if ($loop->iteration === 4)
                     <div class="overlay">{{ $post->photos->count() }} Fotos</div>
                     @endif
-                    <img src="{{ $photo->url }}" alt="">
+                    <img src="{{ Storage::url($photo->url) }}" alt="">
                 </figure>
                 @endforeach
             </div>
