@@ -156,6 +156,61 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                     </div>
                 </li>
+                <!-- User Menu -->
+                <li class="nav-item dropdown user-menu">
+                    <a
+                        href="#"
+                        class="nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        <img
+                            src="/adminlte/img/user2-160x160.jpg"
+                            class="user-image img-circle elevation-2"
+                            alt="User Image"
+                        />
+                        <span class="d-none d-md-inline">{{ auth()->user()->name }}</span>
+                    </a>
+                    <ul
+                        class="dropdown-menu dropdown-menu-lg dropdown-menu-right"
+                        style="left: inherit; right: 0px"
+                    >
+                        <li class="user-header bg-primary">
+                            <img
+                                src="/adminlte/img/user2-160x160.jpg"
+                                class="img-circle elevation-2"
+                                alt="User Image"
+                            />
+                            <p>
+                                {{ auth()->user()->name }}
+                                <small>Desce {{ auth()->user()->created_at->format('d/M/Y') }}</small>
+                            </p>
+                        </li>
+
+{{--                         <li class="user-body">
+                            <div class="row">
+                                <div class="col-4 text-center">
+                                    <a href="#">Followers</a>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <a href="#">Sales</a>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <a href="#">Friends</a>
+                                </div>
+                            </div>
+                        </li>
+ --}}
+                        <li class="user-footer">
+                            <form action="{{ route('logout') }}" method="post">
+                                {{ csrf_field() }}
+                                <button 
+                                    class="btn btn-default btn-flat float-right btn-block"
+                                >Cerrar sesión</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
