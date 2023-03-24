@@ -61,6 +61,15 @@ class Post extends Model
             ->latest('published_at');
     }
 
+    public function scopeAllowed($query)
+    {
+        if (auth()->user()->hasRole('Admin')) {
+            return $query;
+        }
+
+        return $query->where('user_id', auth()->id());
+    }
+
     public function isPublished()
     {
         return (bool) $this->published_at && $this->published_at < today();
