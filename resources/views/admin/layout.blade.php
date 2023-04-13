@@ -182,7 +182,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 alt="User Image"
                             />
                             <p>
-                                {{ auth()->user()->name }}
+                                {{ auth()->user()->name }} - {{ auth()->user()->roles->first()->name }}
                                 <small>Desce {{ auth()->user()->created_at->format('d/M/Y') }}</small>
                             </p>
                         </li>
