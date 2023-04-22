@@ -40,7 +40,7 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->getRoleNames()->implode(', ') }}</td>
                         <td>
-                            <a href="{{ route('admin.users.show', $user) }}" target="_blank" class="btn btn-xs btn-default"><i class="far fa-eye nav-icon"></i></a>
+                            <a href="{{ route('admin.users.show', $user) }}" class="btn btn-xs btn-default"><i class="far fa-eye nav-icon"></i></a>
                             <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-xs btn-info"><i class="fas fa-pencil-alt nav-icon"></i></a>
                             <form 
                                 method="POST" 
