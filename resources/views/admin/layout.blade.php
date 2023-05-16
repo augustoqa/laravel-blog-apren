@@ -182,7 +182,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 alt="User Image"
                             />
                             <p>
-                                {{ auth()->user()->name }} - {{ auth()->user()->roles->first()->name }}
+                                {{ auth()->user()->name }} - {{ optional(auth()->user()->roles->first())->name }}
                                 <small>Desce {{ auth()->user()->created_at->format('d/M/Y') }}</small>
                             </p>
                         </li>
@@ -204,7 +204,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <li class="user-footer">
                             <form action="{{ route('logout') }}" method="post">
                                 {{ csrf_field() }}
-                                <button 
+                                <button
                                     class="btn btn-default btn-flat float-right btn-block"
                                 >Cerrar sesión</button>
                             </form>
