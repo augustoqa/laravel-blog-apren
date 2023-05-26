@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateUserRequest;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -46,12 +47,28 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         // validar formulario
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        ]);
+
         // generar contrasenia
+        $data['password'] = Str::random(8);
+
         // crear usuario
+        $user = User::create($data);
+
         // asignar roles
+        $user->assignRole($request->roles);
+
         // asignar permisos
+        $user->givePermissionTo($request->permissions);
+
         // enviar email al usuario
+
+
         // regresar al usuario
+        return redirect()->route('admin.users.index')->withFlash('El usuario ha sido creado');
     }
 
     /**
