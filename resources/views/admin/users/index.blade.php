@@ -16,9 +16,9 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Listado de usuarios</h3>
-            <button class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+            <a href="{{ route('admin.users.create') }}" class="btn btn-primary float-right">
                 <i class="fa fa-plus"></i>&nbsp; Crear usuario
-            </button>
+            </a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
