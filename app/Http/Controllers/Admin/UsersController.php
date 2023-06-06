@@ -20,7 +20,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::allowed()->get();
 
         return view('admin.users.index', compact('users'));
     }
@@ -33,6 +33,9 @@ class UsersController extends Controller
     public function create()
     {
         $user = new User;
+
+        $this->authorize('create', $user);
+        
         $roles = Role::with('permissions')->get();
         $permissions = Permission::pluck('name', 'id');
 
@@ -47,28 +50,23 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        // validar formulario
+        $this->authorize('create', new User);
+
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ]);
 
-        // generar contrasenia
         $data['password'] = Str::random(8);
 
-        // crear usuario
         $user = User::create($data);
 
-        // asignar roles
         $user->assignRole($request->roles);
 
-        // asignar permisos
         $user->givePermissionTo($request->permissions);
 
-        // enviar email al usuario
         UserWasCreated::dispatch($user, $data['password']);
 
-        // regresar al usuario
         return redirect()->route('admin.users.index')->withFlash('El usuario ha sido creado');
     }
 
@@ -80,6 +78,8 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
+        $this->authorize('view', $user);
+
         return view('admin.users.show', compact('user'));
     }
 
@@ -91,6 +91,8 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
+
         $roles = Role::with('permissions')->get();
         $permissions = Permission::pluck('name', 'id');
 
@@ -106,6 +108,8 @@ class UsersController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
+        $this->authorize('update', $user);
+
         $user->update($request->validated());
 
         return back()->withFlash('Usuario actualizado');
