@@ -49,11 +49,21 @@
                     <h3 class="card-title">Roles</h3>
                 </div>
                 <div class="card-body">
+                    @role('Admin')
                     <form method="post" action="{{ route('admin.users.roles.update', $user) }}">
                     {{ csrf_field() }} {{ method_field('PUT') }}
                         @include('admin.roles.checkboxes')
                         <button class="btn btn-primary btn-block">Actualizar roles</button>
                     </form>
+                    @else
+                    <ul class="list-group">
+                        @forelse ($user->roles as $role)
+                            <li class="list-group-item">{{ $role->name }}</li>
+                        @empty
+                            <li class="list-group-item">No tiene roles</li>
+                        @endforelse
+                    </ul>
+                    @endrole
                 </div>
             </div>
             <div class="card card-primary">
@@ -61,11 +71,21 @@
                     <h3 class="card-title">Permisos</h3>
                 </div>
                 <div class="card-body">
+                    @role('Admin')
                     <form method="post" action="{{ route('admin.users.permissions.update', $user) }}">
                         {{ csrf_field() }} {{ method_field('PUT') }}
                         @include('admin.permissions.checkboxes')
                         <button class="btn btn-primary btn-block">Actualizar permisos</button>
                     </form>
+                    @else
+                    <ul class="list-group">
+                        @forelse ($user->permissions as $permission)
+                            <li class="list-group-item">{{ $permission->name }}</li>
+                        @empty
+                            <li class="list-group-item">No tiene permisos</li>
+                        @endforelse
+                    </ul>
+                    @endrole
                 </div>
             </div>
         </div>

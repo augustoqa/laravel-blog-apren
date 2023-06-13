@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08b6a678-0e79-4cba-a16b-eaacbf159c3e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_05_18_231453_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_05_18_231453_create_posts_table.php" afterDir="false" />
-    </list>
+    <list default="true" id="08b6a678-0e79-4cba-a16b-eaacbf159c3e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -175,7 +171,7 @@
       <workItem from="1683822312773" duration="3646000" />
       <workItem from="1684169632490" duration="605000" />
       <workItem from="1684193601267" duration="4300000" />
-      <workItem from="1686092288762" duration="5155000" />
+      <workItem from="1686092288762" duration="5196000" />
     </task>
     <servers />
   </component>
