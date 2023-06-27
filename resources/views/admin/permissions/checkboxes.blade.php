@@ -4,8 +4,8 @@
             <input
                 name="permissions[]"
                 type="checkbox"
-                value="{{ $id }}"
-                {{ $user->permissions->contains($id) ? 'checked': '' }}>
+                value="{{ $name }}"
+                {{ $model->permissions->contains($id) ? 'checked': '' }}>
             {{ $name }}
         </label>
     </div>

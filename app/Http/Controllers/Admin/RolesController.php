@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RolesController extends Controller
@@ -27,7 +28,10 @@ class RolesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.roles.create', [
+            'role' => new Role,
+            'permissions' => Permission::pluck('name', 'id'),
+        ]);
     }
 
     /**
@@ -38,7 +42,18 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'guard_name' => 'required',
+        ]);
+
+        $role = Role::create($data);
+
+        $role->givePermissionTo($request->permissions);
+
+        return redirect()
+            ->route('admin.roles.index')
+            ->withFlash('El role fue creado correctamente');
     }
 
     /**
