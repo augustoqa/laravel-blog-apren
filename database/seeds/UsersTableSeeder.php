@@ -56,19 +56,19 @@ class UsersTableSeeder extends Seeder
         ]);
 
         $viewRolesPermission = Permission::create([
-            'name' => 'View rol',
+            'name' => 'View roles',
             'display_name' => 'Ver roles',
         ]);
         $createRolesPermission = Permission::create([
-            'name' => 'Create rol',
+            'name' => 'Create roles',
             'display_name' => 'Crear roles',
         ]);
         $updateRolesPermission = Permission::create([
-            'name' => 'Update rol',
+            'name' => 'Update roles',
             'display_name' => 'Actualizar roles',
         ]);
         $deleteRolesPermission = Permission::create([
-            'name' => 'Delete rol',
+            'name' => 'Delete roles',
             'display_name' => 'Eliminar roles',
         ]);
 

@@ -24,6 +24,7 @@
                         <p>Ver todos los posts</p>
                     </a>
                 </li>
+                @can('create', new App\Post)
                 <li class="nav-item">
                     @if (request()->is('admin/posts/*'))
                     <a href="{{ route('admin.posts.index', '#create') }}" class="nav-link">
@@ -37,8 +38,11 @@
                     </a>
                     @endif
                 </li>
+                @endcan
             </ul>
         </li>
+
+        @can('view', new App\User)
         <li class="nav-item {{ request()->is('admin/users*') ? 'menu-open': '' }}">
             <a href="#" class="nav-link {{ setActiveRoute(['admin.users.index', 'admin.users.create']) }}">
                 <i class="nav-icon fas fa-users"></i>
@@ -62,5 +66,40 @@
                 </li>
             </ul>
         </li>
+        @else
+        <li class="nav-item">
+            <a href="{{ route('admin.users.show', auth()->user()) }}" class="{{ setActiveRoute(['admin.users.show', 'admin.users.edit']) }} nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                    Perfil
+                </p>
+            </a>
+        </li>
+        @endcan
+
+        @can('view', new \Spatie\Permission\Models\Role)
+        <li class="nav-item">
+            <a
+                href="{{ route('admin.roles.index') }}"
+                class="{{ setActiveRoute(['admin.roles.index', 'admin.roles.edit']) }} nav-link">
+                <i class="nav-icon fas fa-pen-alt"></i>
+                <p>
+                    Roles
+                </p>
+            </a>
+        </li>
+        @endcan
+
+        @can('view', new \Spatie\Permission\Models\Permission)
+        <li class="nav-item">
+            <a href="{{ route('admin.permissions.index') }}"
+               class="{{ setActiveRoute(['admin.permissions.index', 'admin.permissions.edit']) }} nav-link">
+                <i class="fa fa-tasks"></i>
+                <p>
+                    Permisos
+                </p>
+            </a>
+        </li>
+        @endcan
     </ul>
 </nav>
