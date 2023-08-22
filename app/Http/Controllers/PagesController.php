@@ -23,10 +23,18 @@ class PagesController extends Controller
 
     public function archive()
     {
+        $archive = Post::selectRaw('year(published_at) as year')
+            ->selectRaw('monthname(published_at) as month')
+            ->selectRaw('count(*) as posts')
+            ->groupBy('year', 'month')
+            ->orderBy('month')
+            ->get();
+
         return view('pages.archive', [
             'authors' => User::latest()->take(4)->get(),
             'categories' => Category::take(7)->get(),
             'posts' => Post::latest()->take(5)->get(),
+            'archive' => $archive,
         ]);
     }
 
