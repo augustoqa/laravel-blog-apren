@@ -36,7 +36,7 @@
         @endforelse
     </section><!-- fin del div.posts.container -->
 
-    {{ $posts->links() }}
+    {{ $posts->appends(request()->all())->links() }}
 
 @stop
 

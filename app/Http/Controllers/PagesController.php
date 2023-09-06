@@ -11,7 +11,16 @@ class PagesController extends Controller
 {
     public function home()
     {
-        $posts = Post::published()->paginate(2);
+        $query = Post::published();
+
+        if (request('month')) {
+            $query->whereMonth('published_at', request('month'));
+        }
+        if (request('year')) {
+            $query->whereYear('published_at', request('year'));
+        }
+
+         $posts = $query->paginate(2);
 
         return view('pages.home', compact('posts'));
     }
@@ -23,17 +32,12 @@ class PagesController extends Controller
 
     public function archive()
     {
-        $archive = Post::selectRaw('year(published_at) as year')
-            ->selectRaw('monthname(published_at) as month')
-            ->selectRaw('count(*) as posts')
-            ->groupBy('year', 'month')
-            ->orderBy('month')
-            ->get();
+        $archive = Post::published()->byYearAndMonth()->get();
 
         return view('pages.archive', [
             'authors' => User::latest()->take(4)->get(),
             'categories' => Category::take(7)->get(),
-            'posts' => Post::latest()->take(5)->get(),
+            'posts' => Post::latest('published_at')->take(5)->get(),
             'archive' => $archive,
         ]);
     }

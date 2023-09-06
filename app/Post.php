@@ -19,7 +19,7 @@ class Post extends Model
 
     protected $dates = ['published_at'];
 
-    protected static function boot() 
+    protected static function boot()
     {
         parent::boot();
 
@@ -70,6 +70,16 @@ class Post extends Model
         return $query->where('user_id', auth()->id());
     }
 
+    public function scopeByYearAndMonth($query)
+    {
+        return $query->selectRaw('year(published_at) as year')
+            ->selectRaw('month(published_at) as month')
+            ->selectRaw('monthname(published_at) as monthname')
+            ->selectRaw('count(*) as posts')
+            ->groupBy('year', 'month','monthname')
+            ->orderBy('month');
+    }
+
     public function isPublished()
     {
         return (bool) $this->published_at && $this->published_at < today();
@@ -78,7 +88,7 @@ class Post extends Model
     public static function create(array $attributes = [])
     {
         $attributes['user_id'] = auth()->id();
-        
+
         $post = static::query()->create($attributes);
 
         $post->generateUrl();
@@ -121,7 +131,7 @@ class Post extends Model
 
     public function viewType($home = '')
     {
-        if ($this->photos->count() === 1):    
+        if ($this->photos->count() === 1):
             return 'posts.photo';
         elseif ($this->photos->count() > 1):
             return ($home === 'home') ? 'posts.carousel-preview' : 'posts.carousel';
