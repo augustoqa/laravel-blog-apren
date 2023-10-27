@@ -17582,13 +17582,37 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
+  routes: [{
+    path: '/',
+    component: {
+      template: '<div>Este es el home</div>'
+    }
+  }, {
+    path: '/contacto',
+    component: {
+      template: '<div>Este es el contacto</div>'
+    }
+  }, {
+    path: '/nosotros',
+    component: {
+      template: '<div>Este es el nosotros</div>'
+    }
+  }, {
+    path: '/archivo',
+    component: {
+      template: '<div>Este es el archivo</div>'
+    }
+  }]
+});
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  router: router
 });
 
 /***/ }),

@@ -15,6 +15,9 @@
                 {{-- @include('posts.header') --}}
 
                 {{-- <h1>{{ $post->title }}</h1> --}}
+
+                <router-view></router-view>
+                
                 <div class="divider"></div>
                 {{-- <p>{{ $post->excerpt }}</p> --}}
                 <footer class="container-flex space-between">
