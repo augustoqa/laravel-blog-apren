@@ -17603,7 +17603,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
     component: {
       template: '<div>Este es el archivo</div>'
     }
-  }]
+  }],
+  linkExactActiveClass: 'active'
 });
 
 // const files = require.context('./', true, /\.vue$/i)

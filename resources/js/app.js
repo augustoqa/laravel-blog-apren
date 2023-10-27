@@ -33,6 +33,7 @@ const router = new Router({
       },
     },
   ],
+  linkExactActiveClass: 'active',
 })
 
 // const files = require.context('./', true, /\.vue$/i)
