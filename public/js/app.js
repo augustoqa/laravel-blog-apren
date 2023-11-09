@@ -2182,7 +2182,21 @@ var render = function render() {
       staticClass: "post"
     }, [_c("div", {
       staticClass: "content-post"
-    }, [_c("h1", {
+    }, [_c("header", {
+      staticClass: "container-flex space-between"
+    }, [_c("div", {
+      staticClass: "date"
+    }, [_c("span", {
+      staticClass: "c-gris"
+    }, [_vm._v("\n\t\t\t\t\t\t\t" + _vm._s(post.published_date) + " / " + _vm._s(post.owner.name) + "\n\t\t\t\t\t\t")])]), _vm._v(" "), _c("div", {
+      staticClass: "post-category"
+    }, [_c("span", {
+      staticClass: "category"
+    }, [_c("a", {
+      attrs: {
+        href: "#"
+      }
+    }, [_vm._v(_vm._s(post.category.name))])])])]), _vm._v(" "), _c("h1", {
       domProps: {
         textContent: _vm._s(post.title)
       }
@@ -2192,7 +2206,21 @@ var render = function render() {
       domProps: {
         innerHTML: _vm._s(post.excerpt)
       }
-    }), _vm._v(" "), _vm._m(0, true)])]);
+    }), _vm._v(" "), _c("footer", {
+      staticClass: "container-flex space-between"
+    }, [_vm._m(0, true), _vm._v(" "), _c("div", {
+      staticClass: "tags container-flex"
+    }, [_c("div", {
+      staticClass: "tags container-flex"
+    }, _vm._l(post.tags, function (tag) {
+      return _c("span", {
+        staticClass: "tag c-gray-1 text-capitalize"
+      }, [_vm._v("\n\t\t\t\t\t\t\t\t#"), _c("a", {
+        attrs: {
+          href: "#"
+        }
+      }, [_vm._v(_vm._s(tag.name))])]);
+    }), 0)])])])]);
   }), _vm._v(" "), !_vm.posts.length ? _c("article", {
     staticClass: "post"
   }, [_vm._m(1)]) : _vm._e()], 2);
@@ -2200,13 +2228,14 @@ var render = function render() {
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("footer", {
-    staticClass: "container-flex space-between"
-  }, [_c("div", {
+  return _c("div", {
     staticClass: "read-more"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "tags container-flex"
-  })]);
+  }, [_c("a", {
+    staticClass: "text-uppercase c-green",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Leer más")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;

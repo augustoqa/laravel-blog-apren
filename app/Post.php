@@ -18,6 +18,7 @@ class Post extends Model
     ];
 
     protected $dates = ['published_at'];
+    protected $appends = ['published_date'];
 
     protected static function boot()
     {
@@ -128,6 +129,11 @@ class Post extends Model
         });
 
         return $this->tags()->sync($tagIds);
+    }
+
+    public function getPublishedDateAttribute()
+    {
+        return optional($this->published_at)->format('M d'); 
     }
 
     public function viewType($home = '')
