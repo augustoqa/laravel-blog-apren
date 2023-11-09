@@ -26,16 +26,16 @@
                     <div class="pure-menu"></div>
                     <ul class="container-flex list-unstyled">
                         <li>
-                            <router-link to="/" class="text-uppercase">Inicio</router-link>
+                            <router-link :to="{ name: 'home' }" class="text-uppercase">Inicio</router-link>
                         </li>
                         <li>
-                            <router-link to="/nosotros" class="text-uppercase">Nosotros</router-link>
+                            <router-link :to="{ name: 'about' }" class="text-uppercase">Nosotros</router-link>
                         </li>
                         <li>
-                            <router-link to="/archivo" class="text-uppercase">Archivo</router-link>
+                            <router-link :to="{ name: 'archive' }" class="text-uppercase">Archivo</router-link>
                         </li>
                         <li>
-                            <router-link to="/contacto" class="text-uppercase">Contacto</router-link>
+                            <router-link :to="{ name: 'contact' }" class="text-uppercase">Contacto</router-link>
                         </li>
                     </ul>
                 </nav>
