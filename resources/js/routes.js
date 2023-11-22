@@ -5,6 +5,7 @@ import Home from './views/Home'
 import About from './views/About'
 import Archive from './views/Archive'
 import Contact from './views/Contact'
+import PostsShow from './views/PostsShow'
 import NotFound from './views/404'
 
 Vue.use(Router)
@@ -30,6 +31,11 @@ export default new Router({
 			path: '/archivo',
 			name: 'archive',
 			component: Archive,
+		},
+		{
+			path: '/blog/:url',
+			name: 'posts_show',
+			component: PostsShow,
 		},
 		{
 			path: '*',
