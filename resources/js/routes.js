@@ -7,6 +7,7 @@ import Archive from './views/Archive'
 import Contact from './views/Contact'
 import PostsShow from './views/PostsShow'
 import CategoryPosts from './views/CategoryPosts'
+import TagsPosts from './views/TagsPosts'
 import NotFound from './views/404'
 
 Vue.use(Router)
@@ -42,6 +43,11 @@ export default new Router({
 			path: '/categorias/:category',
 			name: 'category_posts',
 			component: CategoryPosts,
+		},
+		{
+			path: '/etiquetas/:tag',
+			name: 'tags_posts',
+			component: TagsPosts,
 		},
 		{
 			path: '*',

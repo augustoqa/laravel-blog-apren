@@ -29,11 +29,7 @@
 								v-for="tag in post.tags"
 								class="tag c-gray-1 text-capitalize"
 							>
-								<router-link
-									:to="{ name: 'tags_posts', params: { tag: tag.url } }"
-								>
-									#{{ tag.name }}
-								</router-link>
+								#<a href="#">{{ tag.name }}</a>
 							</span>
 						</div>
 					</div>
@@ -48,9 +44,6 @@
 		</article>
 		<!-- @endforelse -->
 	</section>
-	<!-- fin del div.posts.container -->
-
-	<!-- $posts->appends(request()->all())->links()  -->
 </template>
 
 <script>
@@ -62,7 +55,7 @@ export default {
 	},
 	mounted() {
 		axios
-			.get('/api/posts')
+			.get(`/api/etiquetas/${this.$route.params.tag}`)
 			.then((res) => {
 				this.posts = res.data.data
 			})
