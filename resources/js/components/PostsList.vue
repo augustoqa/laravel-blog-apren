@@ -4,8 +4,7 @@
             <h3></h3>
             @endif
     -->
-
-		<posts-list :posts="posts"></posts-list>
+		<post-list-item v-for="post in posts" :post="post" :key="post.id" />
 
 		<!-- @empty -->
 		<article v-if="!posts.length" class="post">
@@ -19,18 +18,6 @@
 
 <script>
 export default {
-	data() {
-		return {
-			posts: [],
-		}
-	},
-	mounted() {
-		axios
-			.get(`/api/categorias/${this.$route.params.category}`)
-			.then((res) => {
-				this.posts = res.data.data
-			})
-			.catch((err) => console.log(err))
-	},
+	props: ['posts'],
 }
 </script>
