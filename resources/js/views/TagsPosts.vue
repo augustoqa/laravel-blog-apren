@@ -19,6 +19,7 @@
 
 <script>
 export default {
+	props: ['tag'],
 	data() {
 		return {
 			posts: [],
@@ -26,7 +27,7 @@ export default {
 	},
 	mounted() {
 		axios
-			.get(`/api/etiquetas/${this.$route.params.tag}`)
+			.get(`/api/etiquetas/${this.tag}`)
 			.then((res) => {
 				this.posts = res.data.data
 			})

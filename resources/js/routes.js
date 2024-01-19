@@ -38,16 +38,19 @@ export default new Router({
 			path: '/blog/:url',
 			name: 'posts_show',
 			component: PostsShow,
+			props: true,
 		},
 		{
 			path: '/categorias/:category',
 			name: 'category_posts',
 			component: CategoryPosts,
+			props: true,
 		},
 		{
 			path: '/etiquetas/:tag',
 			name: 'tags_posts',
 			component: TagsPosts,
+			props: true,
 		},
 		{
 			path: '*',
