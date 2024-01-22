@@ -14,6 +14,8 @@ Vue.component(
   require('./components/PostListItem.vue').default
 )
 Vue.component('nav-bar', require('./components/NavBar.vue').default)
+Vue.component('category-link', require('./components/CategoryLink.vue').default)
+Vue.component('post-link', require('./components/PostLink.vue').default)
 
 const app = new Vue({
   el: '#app',
