@@ -310,3 +310,21 @@ a.btn-bar{
 img {
 	width: 100%;
 }
+
+.page-wrapper {
+	min-height: 100vh;
+}
+
+.slide-fade-enter-active {
+  transition: all 0.8s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.6s cubic-bezier(.17, .67, .83, .67);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(800px);
+  opacity: 0;
+}
