@@ -17,6 +17,8 @@ Vue.component('nav-bar', require('./components/NavBar.vue').default)
 Vue.component('category-link', require('./components/CategoryLink.vue').default)
 Vue.component('post-link', require('./components/PostLink.vue').default)
 Vue.component('disqus-comments', require('./components/DisqusComments.vue').default)
+Vue.component('pagination-links', require('./components/PaginationLinks.vue').default)
+Vue.component('paginator', require('./components/Paginator.vue').default)
 
 const app = new Vue({
   el: '#app',
