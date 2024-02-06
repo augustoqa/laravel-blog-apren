@@ -58,4 +58,7 @@ export default new Router({
 		},
 	],
 	linkExactActiveClass: 'active',
+	scrollBehavior() {
+		return { x: 0, y: 0 }
+	}
 })

@@ -20177,7 +20177,13 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     path: '*',
     component: _views_404__WEBPACK_IMPORTED_MODULE_9__["default"]
   }],
-  linkExactActiveClass: 'active'
+  linkExactActiveClass: 'active',
+  scrollBehavior: function scrollBehavior() {
+    return {
+      x: 0,
+      y: 0
+    };
+  }
 }));
 
 /***/ }),
