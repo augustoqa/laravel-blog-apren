@@ -22,6 +22,7 @@ Vue.component('disqus-comments', require('./components/DisqusComments.vue').defa
 Vue.component('pagination-links', require('./components/PaginationLinks.vue').default)
 Vue.component('paginator', require('./components/Paginator.vue').default)
 Vue.component('social-links', require('./components/SocialLinks.vue').default)
+Vue.component('contact-form', require('./components/ContactForm.vue').default)
 
 const app = new Vue({
   el: '#app',
